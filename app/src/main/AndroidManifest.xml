@@ -14,6 +14,7 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.SoulQuestionApp"
             tools:targetApi="31">
+        <meta-data android:name="author" android:value="赵凌宇@codebook" />
         <activity
                 android:name="SplashActivity"
                 android:exported="true">
