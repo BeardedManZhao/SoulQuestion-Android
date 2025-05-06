@@ -14,6 +14,7 @@ import android.os.Bundle;
 public class MainActivity extends AppCompatActivity {
     private ActivityResultLauncher<Intent> fileChooserLauncher;
     private ValueCallback<Uri[]> mFilePathCallback;
+    private WebView webView;
 
     
 
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
-        WebView webView = findViewById(R.id.webview);
+        webView = findViewById(R.id.webview);
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
@@ -82,5 +83,14 @@ public class MainActivity extends AppCompatActivity {
         settings.setAllowFileAccess(true);
         settings.setAllowContentAccess(true);
         webView.loadUrl("https://question.lingyuzhao.top/questions.html");
+    }
+    
+    @Override
+    public void onBackPressed() {
+        if (webView.canGoBack()) {
+            webView.goBack();
+        } else {
+            super.onBackPressed();
+        }
     }
 }
